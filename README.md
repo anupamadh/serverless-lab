@@ -121,6 +121,10 @@ def lambda_handler(event, context):
 
 
 ```
+Test Lambda Function
+Let's test our newly created function. We haven't created DynamoDB and the API yet, so we'll do a sample echo operation. The function should output whatever input we pass.
+![img_1.png](.idea/images/img_11.png)
+
 
 Deploy the code and test it with the following event:
 ````json
@@ -132,10 +136,14 @@ Deploy the code and test it with the following event:
     }
 }
    ````
-The output of the Test event:
+Click "Test", and it will execute the test event. You should see the output in the console
 ![](.idea/images/img_3.png)
 
 Create a DynamoDB table and an API to invoke the Lambda function:
+![](.idea/images/img_13.png)
+
+Create an API in API Gateway:
+![](.idea/images/img_14.png)
 A post method has been created for the API under Resource.
 ![](.idea/images/img_4.png)
 
