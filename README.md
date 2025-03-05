@@ -68,10 +68,19 @@ Custom Policy:
 ````
 
 
-Create an Execution Role for Lambda and attach the DynamoDB_CloudWatchLogs policy
+Create an Execution Role for Lambda and attach the DynamoDB_CloudWatchLogs policy.
+This will give the Lambda function permission to access AWS resources.
+The role should have the following properties:
+   * Trusted entity – Lambda.
+   * Role name – lambda-apigateway-role.
+   * Permissions – Custom policy(created above) with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that the function needs to write data to DynamoDB and upload logs.
 ![](.idea/images/img_2.png)
 
 Create Lambda Function with the following code. Since we are using the Lambda function to interact with other AWS services and resources we can use Boto3(AWS SDK for Python) to interface with these resources:
+![img_1.png](.idea/images/img_10.png)
+
+![img_1.png](.idea/images/img_5.png)
+
 ```
 from __future__ import print_function
 
@@ -112,6 +121,7 @@ def lambda_handler(event, context):
 
 
 ```
+
 Deploy the code and test it with the following event:
 ````json
 {
