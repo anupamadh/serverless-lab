@@ -142,9 +142,10 @@ Click "Test", and it will execute the test event. You should see the output in t
 Create a DynamoDB table and an API to invoke the Lambda function:
 ![](.idea/images/img_13.png)
 
-Create an API in API Gateway:
+Create an API in API Gateway.Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic.
+
 ![](.idea/images/img_14.png)
-A post method has been created for the API under Resource.
+I have added a resource called DynamoDBManager. A post method has been created for the API under Resource.
 ![](.idea/images/img_4.png)
 
 After creating the resource, we need to deploy the API.
