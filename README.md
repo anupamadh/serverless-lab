@@ -172,3 +172,23 @@ Item is inserted into DynamoDB table:
 
 Use list to see all the items inserted into the DynamoDB table
 ![](.idea/images/img_9.png)
+
+## Scalability
+### Lambda function
+As the Lambda function receives more requests, it automatically scales up the number of execution environments to handle these requests until your account reaches its concurrency quota.
+To protect against over-scaling in response to sudden bursts of traffic, Lambda limits how fast your functions can scale. This concurrency scaling rate is the maximum rate at which functions in your account can scale in response to increased requests. (That is, how quickly Lambda can create new execution environments.)
+### DynamoDB
+Use auto scaling to handle capacity and lower the cost of workloads that have an unpredictable traffic pattern.
+Auto scaling responds quickly and simplifies capacity management, which lowers costs by scaling your table’s provisioned capacity and reducing operational overhead.
+### API Gateway
+Amazon API Gateway will automatically scale to handle the amount of traffic your API receives.
+
+## Availability
+### Lambda function
+Lambda runs your function in multiple Availability Zones to ensure that it is available to process events in case of a service interruption in a single zone. If you configure your function to connect to a virtual private cloud (VPC) in your account, specify subnets in multiple Availability Zones to ensure high availability.
+### DynamoDB
+Use DynamoDB global tables that sync across AWS regions. DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance. All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
+## API Gateway
+As a fully managed Regional service, API Gateway operates in multiple Availability Zones in each Region, using the redundancy of Availability Zones to minimize infrastructure failure as a category of availability risk. API Gateway is designed to automatically recover from the failure of an Availability Zone.
+To prevent your APIs from being overwhelmed by too many requests, API Gateway throttles requests to your APIs.
+You can use Route 53 health checks to control DNS failover from an API Gateway API in a primary region to an API Gateway API in a secondary region. 
