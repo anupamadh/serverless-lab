@@ -188,7 +188,27 @@ Amazon API Gateway will automatically scale to handle the amount of traffic your
 Lambda runs your function in multiple Availability Zones to ensure that it is available to process events in case of a service interruption in a single zone. If you configure your function to connect to a virtual private cloud (VPC) in your account, specify subnets in multiple Availability Zones to ensure high availability.
 ### DynamoDB
 Use DynamoDB global tables that sync across AWS regions. DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance. All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
-## API Gateway
+### API Gateway
 As a fully managed Regional service, API Gateway operates in multiple Availability Zones in each Region, using the redundancy of Availability Zones to minimize infrastructure failure as a category of availability risk. API Gateway is designed to automatically recover from the failure of an Availability Zone.
 To prevent your APIs from being overwhelmed by too many requests, API Gateway throttles requests to your APIs.
 You can use Route 53 health checks to control DNS failover from an API Gateway API in a primary region to an API Gateway API in a secondary region. 
+
+## Cost Optimization
+### Lambda function
+Since Lambda is serverless, there are no servers to manage, it scales automatically, and you only pay for what you use. However, choosing the right memory size settings for a Lambda function is still an important task. AWS Compute Optimizer supports Lambda functions and uses machine-learning to provide memory size recommendations for Lambda functions.
+This allows you to reduce costs and increase performance for your Lambda-based serverless workloads.
+### DynamoDB
+* To optimize the cost of a DynamoDB table, you can do the following: 
+* Minimize the number of attributes per item - Reduce the number of attributes per item as DynamoDB charges based on the total data size.
+* Utilize batch write operations - Use batch write operations to group multiple write requests into a single API call.
+* Store infrequently accessed data in cheaper storage like S3 - Move older, less frequently accessed data to cheaper storage like Amazon S3.
+* Leverage automatic scaling - Enable automatic scaling to adjust capacity dynamically based on traffic fluctuations.
+* Choose a cost-effective AWS region -Choosing a cost-effective AWS region for your DynamoDB table involves considering the cost of storage, data access patterns, and network latency.  
+* Consider a single-table design - Consider a single table design to reduce the number of tables and secondary indexes needed.
+* Carefully manage your provisioned capacity based on usage patterns - Use provisioned capacity mode to set specific read and write capacity units based on your expected usage. 
+### API Gateway
+* Choose the right API type (like using HTTP APIs instead of REST APIs when possible) - Generally cheaper than REST APIs, suitable when you don't need all the advanced features of REST.
+* Utilizing caching mechanisms to reduce backend calls - Store responses from backend services in API Gateway cache to reduce calls to your backend, lowering costs.
+* Monitoring API usage to identify unnecessary requests - Analyze usage data to identify API endpoints that are being called excessively and might be optimized or removed.
+* Implementing appropriate throttling and rate limits - Set appropriate limits on the number of API requests a client can make within a specific time frame to manage costs and prevent excessive usage.
+* Leveraging AWS Cost Explorer to analyze and manage your spending on API Gateway services - Use AWS Cost Explorer to visualize your API Gateway costs, identify areas for optimization, and track spending over time. 
