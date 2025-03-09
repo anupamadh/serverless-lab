@@ -212,3 +212,19 @@ This allows you to reduce costs and increase performance for your Lambda-based s
 * Monitoring API usage to identify unnecessary requests - Analyze usage data to identify API endpoints that are being called excessively and might be optimized or removed.
 * Implementing appropriate throttling and rate limits - Set appropriate limits on the number of API requests a client can make within a specific time frame to manage costs and prevent excessive usage.
 * Leveraging AWS Cost Explorer to analyze and manage your spending on API Gateway services - Use AWS Cost Explorer to visualize your API Gateway costs, identify areas for optimization, and track spending over time. 
+
+## Security
+### Lambda function
+You can protect your Lambda functions by controlling who can access them with identity and access management (IAM) policies.
+These policies should define who has access and what they can access. In addition, you can leverage tags for fine-grained access to your Lambda functions, versions, and layers.
+### DynamoDB
+DynamoDB utilizes IAM to help you securely control access to your DynamoDB resources. With IAM, you can centrally manage permissions that control which DynamoDB users can access resources.
+By default, DynamoDB encrypts all customer data at rest. Encryption at rest enhances the security of your data by using encryption keys stored in AWS Key Management Service (AWS KMS).
+### API Gateway
+API Gateway provides a number of ways to protect your API from certain threats, like malicious users or spikes in traffic. You can protect your API using strategies like generating SSL certificates, configuring a web application firewall, setting throttling targets, and only allowing access to your API from a Virtual Private Cloud (VPC).
+* Implement least privilege access - Use IAM policies to implement least privilege access for creating, reading, updating, or deleting API Gateway APIs.
+* Implement logging - Use CloudWatch Logs or Amazon Data Firehose to log requests to your APIs.
+* Implement Amazon CloudWatch alarms - Using CloudWatch alarms, you watch a single metric over a time period that you specify. If the metric exceeds a given threshold, a notification is sent to an Amazon Simple Notification Service topic or AWS Auto Scaling policy.
+* Enable AWS CloudTrail - CloudTrail provides a record of actions taken by a user, role, or an AWS service in API Gateway. 
+* Enable AWS Config - AWS Config provides a detailed view of the configuration of AWS resources in your account. You can see how resources are related, get a history of configuration changes, and see how relationships and configurations change over time. You can use AWS Config to define rules that evaluate resource configurations for data compliance.
+* Use AWS Security Hub - Monitor your usage of API Gateway as it relates to security best practices by using AWS Security Hub. Security Hub uses security controls to evaluate resource configurations and security standards to help you comply with various compliance frameworks.
